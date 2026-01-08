@@ -1,0 +1,101 @@
+Name    - Mayank sharma  
+UID     - 22BCS16224
+Batch   -2026
+
+using System;
+
+public class Day2
+{
+    public static void Main()
+    {
+        // Exercise 1: Attendance
+        const int attendedClasses = 42;
+        const int totalClasses = 50;
+
+        double attendancePercentage = (attendedClasses * 100.0) / totalClasses;
+        int roundedAttendance = (int)Math.Round(attendancePercentage);
+
+        Console.WriteLine($"Attendance: {roundedAttendance}%");
+
+        // Exercise 2: Exam Results
+        int mathMarks = 85;
+        int scienceMarks = 92;
+        int englishMarks = 79;
+
+        double averageMarks = (mathMarks + scienceMarks + englishMarks) / 3.0;
+        int rankScore = (int)Math.Floor(averageMarks);
+
+        Console.WriteLine($"Average: {averageMarks:F2}");
+        Console.WriteLine($"Rank Score: {rankScore}");
+
+        // Exercise 3: Library Fines
+        const decimal dailyFineRate = 1.50m;
+        int numberOfLateDays = 7;
+
+        decimal totalFine = dailyFineRate * numberOfLateDays;
+        double fineAsDouble = Convert.ToDouble(totalFine);
+
+        Console.WriteLine($"Fine Amount: ${totalFine}");
+        Console.WriteLine($"Fine (Double): {fineAsDouble}");
+
+        // Exercise 4: Banking Interest
+        decimal accountBalance = 1500.75m;
+        const float annualInterestRate = 0.045f;
+
+        decimal monthlyInterest = accountBalance * (decimal)(annualInterestRate / 12);
+        accountBalance += monthlyInterest;
+
+        Console.WriteLine($"Updated Balance: {accountBalance:C}");
+
+        // Exercise 5: E-Commerce Order
+        double cartAmount = 199.99;
+        const decimal salesTaxRate = 0.08m;
+
+        decimal finalAmount = (decimal)cartAmount * (1 + salesTaxRate);
+
+        Console.WriteLine($"Final Payable Amount: {finalAmount:C}");
+
+        // Exercise 6: Weather Monitoring
+        short sensorTemperature = 450; // raw value
+        double temperatureCelsius = sensorTemperature / 10.0;
+        int displayTemperature = (int)Math.Round(temperatureCelsius);
+
+        Console.WriteLine($"Exact Temp: {temperatureCelsius}°C | Display Temp: {displayTemperature}°C");
+
+        // Exercise 7: University Grading
+        double studentScore = 88.7;
+        byte gradePoint;
+
+        if (studentScore >= 90)
+            gradePoint = 4;
+        else if (studentScore >= 80)
+            gradePoint = 3;
+        else
+            gradePoint = 2;
+
+        Console.WriteLine($"Grade Point Earned: {gradePoint}");
+
+        // Exercise 8: Data Usage Tracker
+        long totalBytesUsed = 2_147_483_648L;
+        double usageInGB = totalBytesUsed / 1_073_741_824.0;
+        int roundedUsageGB = (int)Math.Ceiling(usageInGB);
+
+        Console.WriteLine($"Usage: {usageInGB:F2} GB (Rounded: {roundedUsageGB} GB)");
+
+        // Exercise 9: Warehouse Inventory
+        int currentStock = 30000;
+        ushort warehouseCapacity = 50000;
+
+        bool exceedsCapacity = currentStock > warehouseCapacity;
+
+        Console.WriteLine($"Warehouse Over Capacity: {exceedsCapacity}");
+
+        // Exercise 10: Payroll Salary
+        int baseSalary = 5000;
+        const double bonusMultiplier = 1.15;
+
+        decimal totalSalary = (decimal)baseSalary * (decimal)bonusMultiplier;
+
+        Console.WriteLine($"Net Salary Payable: {totalSalary:C}");
+    }
+}

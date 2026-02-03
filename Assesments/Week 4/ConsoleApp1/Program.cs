@@ -63,6 +63,7 @@
                 decimal total = Basefee * SecurityLevel;
                 return total;
             }
+        }
             class Hospitalbilling
             { 
                 private List<Patient> patients = new List<Patient>();
@@ -120,4 +121,4 @@
             }
         }
     }
-}
+

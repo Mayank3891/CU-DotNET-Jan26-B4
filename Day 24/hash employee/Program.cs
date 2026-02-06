@@ -21,7 +21,7 @@ namespace hash_employee
             details(emp, 101, "Alice");
 
             details(emp, 102, "Bob");
-            details(emp, 103, "Charlie");
+            details(emp, 101, "Charlie");
             details(emp, 104, "Diana");
 
 

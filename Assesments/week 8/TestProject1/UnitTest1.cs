@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Annualbonus;   // ? Reference to your main project namespace
+using Annualbonus;  
 using System;
 
 namespace TestProject1
@@ -7,7 +7,7 @@ namespace TestProject1
     public class EmployeeBonusTests
     {
         [Test]
-        public void TestCase1_NormalHighPerformer()
+        public void NormalHighPerformer()
         {
             var emp = new EmployeeBonus
             {
@@ -21,7 +21,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase2_AttendancePenalty()
+        public void AttendancePenalty()
         {
             var emp = new EmployeeBonus
             {
@@ -35,7 +35,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase3_CapTriggered()
+        public void CapTriggered()
         {
             var emp = new EmployeeBonus
             {
@@ -49,7 +49,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase4_ZeroSalary()
+        public void ZeroSalary()
         {
             var emp = new EmployeeBonus
             {
@@ -63,7 +63,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase5_LowPerformer()
+        public void LowPerformer()
         {
             var emp = new EmployeeBonus
             {
@@ -77,7 +77,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase6_Exact150kBoundary()
+        public void Exact150kBoundary()
         {
             var emp = new EmployeeBonus
             {
@@ -91,7 +91,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase7_HighTaxSlab()
+        public void HighTaxSlab()
         {
             var emp = new EmployeeBonus
             {
@@ -105,7 +105,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase8_RoundingPrecision()
+        public void RoundingPrecision()
         {
             var emp = new EmployeeBonus
             {
@@ -119,7 +119,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void TestCase_InvalidRating()
+        public void TestCase()
         {
             var emp = new EmployeeBonus
             {

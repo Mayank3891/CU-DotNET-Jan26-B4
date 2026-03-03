@@ -96,7 +96,8 @@ namespace Annualbonus
         static void Main(string[] args)
         {
             EmployeeBonus emp = new EmployeeBonus();
-            emp.NetAnnualBonus;
+            
+            Console.WriteLine(emp.NetAnnualBonus);
             
         }
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sum of Two Numbers</title>
+
+    <script>
+        function validateAndSum() {
+
+            let num1 = document.getElementById("num1");
+            let num2 = document.getElementById("num2");
+            let result = document.getElementById("result");
+
+            let v1 = num1.value.trim();
+            let v2 = num2.value.trim();
+
+            // Reset colors
+            num1.style.backgroundColor = "white";
+            num2.style.backgroundColor = "white";
+
+            // Empty validation
+            if (v1 === "" || v2 === "") {
+                if (v1 === "") num1.style.backgroundColor = "red";
+                if (v2 === "") num2.style.backgroundColor = "red";
+
+                result.value = "Error: Empty value";
+                return;
+            }
+
+            // Non numeric validation
+            if (isNaN(v1) || isNaN(v2)) {
+
+                if (isNaN(v1)) num1.style.backgroundColor = "yellow";
+                if (isNaN(v2)) num2.style.backgroundColor = "yellow";
+
+                result.value = "Error: Non numeric value";
+                return;
+            }
+
+            // Valid numbers
+            num1.style.backgroundColor = "white";
+            num2.style.backgroundColor = "white";
+
+            let sum = Number(v1) + Number(v2);
+
+            result.value = sum;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Sum of Two Numbers</h2>
+
+    Number 1 :
+    <input type="text" id="num1" onblur="validateAndSum()">
+
+
+
+    Number 2 :
+    <input type="text" id="num2" onblur="validateAndSum()">
+
+
+
+    Result :
+    <input type="text" id="result" readonly>
+
+</body>
+
+</html>

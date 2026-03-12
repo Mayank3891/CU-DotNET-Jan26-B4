@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Debt Loan Calculator</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <script>
+
+        function calculateEMI() {
+            let P = parseFloat(document.getElementById("amount").value);
+            let annualRate = parseFloat(document.getElementById("rate").value);
+            let n = parseInt(document.getElementById("months").value);
+
+            let r = annualRate / 12 / 100;
+
+
+            let EMI = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+
+            let balance = P;
+
+            let body = document.getElementById("scheduleBody");
+            body.innerHTML = "";
+
+            for (let i = 1; i <= n; i++) {
+                let interest = balance * r;
+                let principal = EMI - interest;
+                let remaining = balance - principal;
+
+                let row = "<tr>";
+
+                row += "<td>" + i + "</td>";
+                row += "<td>" + balance.toFixed(2) + "</td>";
+                row += "<td>" + EMI.toFixed(2) + "</td>";
+                row += "<td>" + principal.toFixed(2) + "</td>";
+                row += "<td>" + interest.toFixed(2) + "</td>";
+                row += "<td>" + remaining.toFixed(2) + "</td>";
+
+                row += "</tr>";
+
+                body.innerHTML += row;
+
+                balance = remaining;
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2> ===== Clear Debt Loan Calculator =====</h2>
+
+
+    <input type="text" id="amount">
+
+    <br><br>
+
+
+    <input type="text" id="rate">
+
+    <br><br>
+
+
+    <input type="text" id="months">
+
+    <br><br>
+
+    <button onclick="calculateEMI()">Calculate</button>
+
+    <br><br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>SNO</th>
+                <th>Loan Left</th>
+                <th>EMI</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Remaining Balance</th>
+            </tr>
+        </thead>
+
+        <tbody id="scheduleBody">
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>

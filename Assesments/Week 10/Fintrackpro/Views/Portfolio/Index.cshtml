@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach(var temp in Model){
+                <tr>
+            <td>@temp.id</td>
+            <td>@temp.name</td>
+            <td>@temp.price</td>
+            <td>@temp.Quantity</td>
+                <td>@(temp.price * temp.Quantity)</td>
+                <td><a asp-action="Delete" asp-route-id="@temp.id">Delete</a></td>
+                </tr>
+            }
+        
+    </tbody>
+</table>

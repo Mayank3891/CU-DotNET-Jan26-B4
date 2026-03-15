@@ -1,10 +1,12 @@
-﻿namespace Fintrackpro.Models
+﻿using Microsoft.AspNetCore.Mvc.Formatters;
+using System.ComponentModel.DataAnnotations;
+
+namespace FinTrackPro.Models
 {
     public class Asset
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public double price { get; set; }
-        public int Quantity { get; set; }
+        public int Id { get; set; }
+        public double Value { get; set; }
+        public string Description { get; set; }
     }
 }

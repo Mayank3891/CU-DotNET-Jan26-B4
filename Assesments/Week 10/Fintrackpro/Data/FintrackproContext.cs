@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Fintrackpro.Models;
+using FinTrackPro.Models;
 
-namespace Fintrackpro.Data
+namespace FinTrackPro.Data
 {
-    public class FintrackproContext : DbContext
+    public class FinTrackProContext : DbContext
     {
-        public FintrackproContext (DbContextOptions<FintrackproContext> options)
+        public FinTrackProContext (DbContextOptions<FinTrackProContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Fintrackpro.Models.Transaction> Transaction { get; set; } = default!;
-        public DbSet<Fintrackpro.Models.Account> Account { get; set; } = default!;
+        public DbSet<FinTrackPro.Models.Account> Account { get; set; } = default!;
+        public DbSet<FinTrackPro.Models.Transaction> Transaction { get; set; } = default!;
     }
 }

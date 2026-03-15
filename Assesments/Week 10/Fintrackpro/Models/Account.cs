@@ -1,11 +1,16 @@
-﻿namespace Fintrackpro.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.Transactions;
+
+namespace FinTrackPro.Models
 {
     public class Account
     {
-        public int ID { get; set; }
-        public string Accountno { get; set; }
-        public string AccountName { get; set; }
+        public int AccountId { get; set; }
+        public string Name { get; set; }
+
         public double Balance { get; set; }
-        public List<Transaction> transactions = new List<Transaction>();
+        [ValidateNever]
+        public List<Transaction> transactions { get; set; }
+
     }
 }

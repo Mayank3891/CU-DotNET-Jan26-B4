@@ -1,4 +1,4 @@
-﻿@model Fintrackpro.Models.Transaction
+﻿@model FinTrackPro.Models.Transaction
 
 @{
     ViewData["Title"] = "Delete";
@@ -36,15 +36,15 @@
             @Html.DisplayFor(model => model.Date)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Account)
+            @Html.DisplayNameFor(model => model.account)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Account.ID)
+            @Html.DisplayFor(model => model.account.AccountId)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="TransactionId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

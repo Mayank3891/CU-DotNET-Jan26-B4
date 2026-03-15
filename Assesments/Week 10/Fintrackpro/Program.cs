@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Fintrackpro.Data;
-namespace Fintrackpro
+using FinTrackPro.Data;
+namespace FinTrackPro
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<FintrackproContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("FintrackproContext") ?? throw new InvalidOperationException("Connection string 'FintrackproContext' not found.")));
+            builder.Services.AddDbContext<FinTrackProContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("FinTrackProContext") ?? throw new InvalidOperationException("Connection string 'FinTrackProContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -33,7 +33,7 @@ namespace Fintrackpro
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Index}/{id?}");
+                pattern: "{controller=Accounts}/{action=Index}/{id?}");
 
             app.Run();
         }

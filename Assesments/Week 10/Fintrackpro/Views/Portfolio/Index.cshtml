@@ -1,32 +1,47 @@
-﻿
+﻿@model IEnumerable<FinTrackPro.Models.Asset>
+
 @{
     ViewData["Title"] = "Index";
+    string print = "";
+    bool check = TempData["Success"] != null ? true : false;
+    if (check) print = "Sucessfully Deleted";
 }
 
 <h1>Index</h1>
 
-<table class="table table-striped">
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Total</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        
-            @foreach(var temp in Model){
-                <tr>
-            <td>@temp.id</td>
-            <td>@temp.name</td>
-            <td>@temp.price</td>
-            <td>@temp.Quantity</td>
-                <td>@(temp.price * temp.Quantity)</td>
-                <td><a asp-action="Delete" asp-route-id="@temp.id">Delete</a></td>
-                </tr>
-            }
-        
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<p>@print</p>

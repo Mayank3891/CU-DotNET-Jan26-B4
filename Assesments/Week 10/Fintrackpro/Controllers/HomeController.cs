@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Fintrackpro.Models;
+using FinTrackPro.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Fintrackpro.Controllers
+namespace FinTrackPro.Controllers
 {
     public class HomeController : Controller
     {

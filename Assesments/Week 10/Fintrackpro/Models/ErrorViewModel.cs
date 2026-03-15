@@ -1,4 +1,4 @@
-namespace Fintrackpro.Models
+namespace FinTrackPro.Models
 {
     public class ErrorViewModel
     {

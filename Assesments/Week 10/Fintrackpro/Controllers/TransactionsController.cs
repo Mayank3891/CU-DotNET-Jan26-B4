@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Fintrackpro.Data;
-using Fintrackpro.Models;
+using FinTrackPro.Data;
+using FinTrackPro.Models;
 
-namespace Fintrackpro.Controllers
+namespace FinTrackPro.Controllers
 {
     public class TransactionsController : Controller
     {
-        private readonly FintrackproContext _context;
+        private readonly FinTrackProContext _context;
 
-        public TransactionsController(FintrackproContext context)
+        public TransactionsController(FinTrackProContext context)
         {
             _context = context;
         }
@@ -22,8 +22,8 @@ namespace Fintrackpro.Controllers
         // GET: Transactions
         public async Task<IActionResult> Index()
         {
-            var fintrackproContext = _context.Transaction.Include(t => t.Account);
-            return View(await fintrackproContext.ToListAsync());
+            var finTrackProContext = _context.Transaction.Include(t => t.account);
+            return View(await finTrackProContext.ToListAsync());
         }
 
         // GET: Transactions/Details/5
@@ -35,8 +35,8 @@ namespace Fintrackpro.Controllers
             }
 
             var transaction = await _context.Transaction
-                .Include(t => t.Account)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(t => t.account)
+                .FirstOrDefaultAsync(m => m.TransactionId == id);
             if (transaction == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace Fintrackpro.Controllers
         // GET: Transactions/Create
         public IActionResult Create()
         {
-            ViewData["AccountId"] = new SelectList(_context.Account, "ID", "ID");
+            ViewData["AccountId"] = new SelectList(_context.Account, "AccountId", "AccountId");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Fintrackpro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,Amount,Category,Date,AccountId")] Transaction transaction)
+        public async Task<IActionResult> Create([Bind("TransactionId,Description,Amount,Category,Date,AccountId")] Transaction transaction)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace Fintrackpro.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountId"] = new SelectList(_context.Account, "ID", "ID", transaction.AccountId);
+            ViewData["AccountId"] = new SelectList(_context.Account, "AccountId", "AccountId", transaction.AccountId);
             return View(transaction);
         }
 
@@ -82,7 +82,7 @@ namespace Fintrackpro.Controllers
             {
                 return NotFound();
             }
-            ViewData["AccountId"] = new SelectList(_context.Account, "ID", "ID", transaction.AccountId);
+            ViewData["AccountId"] = new SelectList(_context.Account, "AccountId", "AccountId", transaction.AccountId);
             return View(transaction);
         }
 
@@ -91,9 +91,9 @@ namespace Fintrackpro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Amount,Category,Date,AccountId")] Transaction transaction)
+        public async Task<IActionResult> Edit(int id, [Bind("TransactionId,Description,Amount,Category,Date,AccountId")] Transaction transaction)
         {
-            if (id != transaction.Id)
+            if (id != transaction.TransactionId)
             {
                 return NotFound();
             }
@@ -107,7 +107,7 @@ namespace Fintrackpro.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TransactionExists(transaction.Id))
+                    if (!TransactionExists(transaction.TransactionId))
                     {
                         return NotFound();
                     }
@@ -118,7 +118,7 @@ namespace Fintrackpro.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AccountId"] = new SelectList(_context.Account, "ID", "ID", transaction.AccountId);
+            ViewData["AccountId"] = new SelectList(_context.Account, "AccountId", "AccountId", transaction.AccountId);
             return View(transaction);
         }
 
@@ -131,8 +131,8 @@ namespace Fintrackpro.Controllers
             }
 
             var transaction = await _context.Transaction
-                .Include(t => t.Account)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(t => t.account)
+                .FirstOrDefaultAsync(m => m.TransactionId == id);
             if (transaction == null)
             {
                 return NotFound();
@@ -158,7 +158,7 @@ namespace Fintrackpro.Controllers
 
         private bool TransactionExists(int id)
         {
-            return _context.Transaction.Any(e => e.Id == id);
+            return _context.Transaction.Any(e => e.TransactionId == id);
         }
     }
 }

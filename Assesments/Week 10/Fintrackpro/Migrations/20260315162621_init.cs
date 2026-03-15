@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Fintrackpro.Migrations
+namespace FinTrackPro.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration
@@ -15,42 +15,53 @@ namespace Fintrackpro.Migrations
                 name: "Account",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    AccountId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Accountno = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AccountName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Balance = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Account", x => x.ID);
+                    table.PrimaryKey("PK_Account", x => x.AccountId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Transaction",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    TransactionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.Id);
+                    table.PrimaryKey("PK_Transaction", x => x.TransactionId);
+                    table.ForeignKey(
+                        name: "FK_Transaction_Account_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Account",
+                        principalColumn: "AccountId",
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transaction_AccountId",
+                table: "Transaction",
+                column: "AccountId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Account");
+                name: "Transaction");
 
             migrationBuilder.DropTable(
-                name: "Transaction");
+                name: "Account");
         }
     }
 }

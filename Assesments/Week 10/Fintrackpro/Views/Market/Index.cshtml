@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    var top = ViewData["Top"] as Tuple<string, long>;
+    string name = top.Item1;
+    string value = $"{top.Item2}";
+    string check = ViewBag.Status;
+    if (check == "Open")
+    {
+        <div class="alert alert-success" role="alert">Market is Open</div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Top Gainer for Today</h5>
+                <p class="card-text">Name = @name</p>
+                <p class="card-text">Value = @value</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">Market is Closed</div>
+    }
+}
+

@@ -3,37 +3,8 @@
 }
 
 
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show Toast</button>
 
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert">
-
-        <div class="toast-header">
-            <strong class="me-auto">Company Portal</strong>
-            <small>Now</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-
-        <div class="toast-body">
-            Message sent successfully!
-        </div>
-
-    </div>
-</div>
-
-<script>
-    const toastTrigger = document.getElementById('liveToastBtn');
-    const toastLive = document.getElementById('liveToast');
-
-    if (toastTrigger) {
-      const toastBootstrap = new bootstrap.Toast(toastLive);
-
-      toastTrigger.addEventListener('click', () => {
-        toastBootstrap.show();
-      });
-    }
-</script>
-<div class="jumbotron bg-primary text-white p-4">
+<div class="jumbotron  bg-light text-black p-4">
     <h1 class="display-4">Welcome To Company Portal</h1>
     <p class="lead">We are Leading software company in india .</p>
     <hr class="my-4">
@@ -42,8 +13,10 @@
         <a class="btn btn-light btn-lg" href="#" role="button">Learn more</a>
     </p>
 </div>
-<div class="card" style="width: 18rem;">
-    <img src="data:image/png;base64,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" class="card-img-top" alt="...">
+
+<div class="card mt-5" style="width: 18rem;>
+    
+    <img src="~/images/culogo.jpg" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">Google</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>

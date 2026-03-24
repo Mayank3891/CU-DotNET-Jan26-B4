@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "showdata";
+    bool status = (bool)ViewData["status"];
+}
+<script>
+    var a ='@ViewBag.Announcement';
+    if(a!=""){
+        alert(a);
+    }
+</script>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">S.no</th>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <th scope="row">@t.Id</th>
+                <td>@t.Name</td>
+                <td>@t.Position</td>
+                <td>@t.Salary</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+<div>
+    @if (status)
+    {
+        <span class="badge bg-primary">Server is Active</span>
+    }
+    else{
+        <span class="badge bg-success">Server is Under Maintenance</span>
+    }
+
+    </div>
+

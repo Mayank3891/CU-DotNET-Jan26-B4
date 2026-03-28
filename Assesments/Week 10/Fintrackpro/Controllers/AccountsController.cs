@@ -27,8 +27,10 @@ namespace FinTrackPro.Controllers
                             .Include(a => a.transactions)
                             .ToListAsync();
 
+
             return View(accounts);
         }
+            
 
         // GET: Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -73,6 +75,7 @@ namespace FinTrackPro.Controllers
                 TempData["Status"] = "Done";
                 return RedirectToAction(nameof(Index));
             }
+           
             return View(account);
         }
 

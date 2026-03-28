@@ -1,0 +1,106 @@
+@model IEnumerable<GlobalMart.Models.Finalprice>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<div class="container my-5">
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info text-center rounded-4 shadow-sm">
+            <h4 class="fw-bold mb-2">
+                <i class="bi bi-cart-x me-2"></i> No items in cart
+            </h4>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="bi bi-bag-plus me-2"></i> Continue Shopping
+            </a>
+        </div>
+    }
+    else
+    {
+        <!-- Cart Items -->
+        <div class="card shadow-lg rounded-4 border-0">
+            <div class="card-header bg-gradient bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-cart-check me-2"></i> Cart Items
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1 fw-bold">@(item?.Product?.Name ?? "No product")</h6>
+                                @if (!string.IsNullOrEmpty(item?.PromoCode))
+                                {
+                                    <small class="text-muted">
+                                        <i class="bi bi-tag me-1"></i> Promo Code: @item.PromoCode
+                                    </small>
+                                }
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-success fs-6 me-2">
+                                    @(item != null ? item.FinalPrice.ToString("C") : "-")
+                                </span>
+                                <form asp-action="RemoveFromCart" asp-route-productId="@item?.Product?.Id" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash me-1"></i> Remove
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <!-- Total Price -->
+        <div class="card mt-4 bg-light shadow-sm rounded-4">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-semibold">Total Price:</h5>
+                <h4 class="text-success fw-bold">
+                    @Model.Sum(item => item.FinalPrice).ToString("C")
+                </h4>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-4 d-flex gap-3">
+            <a asp-controller="Product" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="bi bi-bag me-2"></i> Continue Shopping
+            </a>
+            <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                <i class="bi bi-credit-card me-2"></i> Proceed to Checkout
+            </button>
+        </div>
+    }
+</div>
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow-lg">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="checkoutModalLabel">
+                    <i class="bi bi-receipt me-2"></i> Order Summary
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Total Items: <strong>@Model?.Count()</strong></p>
+                <p>Total Price: <strong>@Model?.Sum(item => item.FinalPrice).ToString("C")</strong></p>
+                <p class="text-muted">Thank you for your purchase!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i> Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    <i class="bi bi-check2-circle me-1"></i> Complete Order
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

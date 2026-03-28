@@ -21,7 +21,27 @@ namespace FinTrackPro.Controllers
         {
             return View(_assets.FirstOrDefault(x => x.Id == id));
         }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var assetedit = _assets.FirstOrDefault(x => x.Id == id);
+            return View(assetedit);
+        }
+        [HttpPost]
+        public IActionResult Edit(Asset assetedit)
+        {
+            foreach(var temp in _assets)
+            {
+                if (temp.Id == assetedit.Id)
+                {
+                    temp.Value = assetedit.Value;
+                    temp.Description = assetedit.Description;
 
+                }
+
+            }
+            return RedirectToAction(nameof(Index));
+        }
         [HttpGet]
         public IActionResult Delete(int id)
         {

@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a><br>
 </p>
 
 <table class="table table-bordered">
@@ -23,7 +23,7 @@
 
         @foreach (var item in Model)
         {
-            <!-- Account Row -->
+           
             <tr class="table-primary">
                 <td>@item.Name</td>
                 <td>@item.Balance</td>
@@ -37,6 +37,7 @@
                        class="text-success">
                         Add Transaction
                     </a>
+                    
                 </td>
             </tr>
 
@@ -57,7 +58,7 @@
 
                         <tbody>
 
-                            @if (item.transactions != null && item.transactions.Any())
+                            @if (item.transactions != null )
                             {
                                 foreach (var t in item.transactions)
                                 {
@@ -78,14 +79,22 @@
                                     </td>
                                 </tr>
                             }
-
+                           
                         </tbody>
 
                     </table>
 
                 </td>
             </tr>
+            
+            
+
         }
 
     </tbody>
 </table>
+
+<a asp-controller="Transactions" asp-action="MoneySent"
+   class="btn btn-primary btn-lg w-100">
+    Send Money
+</a>

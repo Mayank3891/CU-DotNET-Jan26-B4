@@ -1,0 +1,66 @@
+﻿@model GlobalMart.Models.Products
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+
+            <div class="card shadow-lg rounded-4 border-0">
+
+                <div class="card-header bg-gradient bg-warning text-dark text-center rounded-top-4">
+                    <h3 class="mb-0">Edit Product</h3>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" class="needs-validation" novalidate>
+
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
+
+                        <!-- Hidden ID -->
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Id" class="form-label fw-semibold"></label>
+                            <input asp-for="Id" class="form-control form-control-lg" readonly />
+                            <span asp-validation-for="Id" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold"></label>
+                            <input asp-for="Name" class="form-control form-control-lg" placeholder="Enter Product Name" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="price" class="form-label fw-semibold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="price" class="form-control form-control-lg" placeholder="Enter Price" />
+                            </div>
+                            <span asp-validation-for="price" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-warning btn-lg">
+                                <i class="bi bi-save me-2"></i> Save Changes
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-outline-secondary w-100">
+                        <i class="bi bi-arrow-left me-2"></i> Back to List
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+﻿@{
+    ViewData["Title"] = "Home - GlobalMart";
+}
+
+<!-- Hero Section -->
+<div class="hero-section text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4">Welcome to GlobalMart</h1>
+                <p class="lead mb-4">
+                    Your one-stop destination for quality products at unbeatable prices. Shop smart, save more!
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-light btn-lg px-5">
+                        <i class="bi bi-shop me-2"></i> Explore Products
+                    </a>
+                    <a asp-controller="Checkout" asp-action="Cart" class="btn btn-outline-light btn-lg px-5">
+                        <i class="bi bi-cart3 me-2"></i> View Cart
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div style="font-size: 100px;">
+                    <i class="bi bi-bag-fill text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5">
+    <h2 class="text-center fw-bold mb-5 text-primary">Why Choose GlobalMart?</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                <div class="card-body text-center">
+                    <div class="icon-style">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Fast Checkout</h5>
+                    <p class="card-text text-muted">
+                        Quick and easy checkout process. Apply promo codes and see instant discounts.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                <div class="card-body text-center">
+                    <div class="icon-style">
+                        <i class="bi bi-percent"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Exclusive Offers</h5>
+                    <p class="card-text text-muted">
+                        Enjoy exclusive promo codes like WINTER25 (15% off) and FREESHIP (₹5 discount).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4 hover-card">
+                <div class="card-body text-center">
+                    <div class="icon-style">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h5 class="card-title fw-bold">Secure & Trusted</h5>
+                    <p class="card-text text-muted">
+                        Your data is safe with us. All transactions are secure and encrypted.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Promo Codes Section -->
+<div class="bg-light py-5 my-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 text-primary">Available Promo Codes</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card border-start border-5 border-success shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-success fw-bold">
+                            <i class="bi bi-tag-fill me-2"></i> WINTER25
+                        </h5>
+                        <p class="card-text">Get <strong>15% discount</strong> on all products</p>
+                        <small class="text-muted">Valid on all purchases</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card border-start border-5 border-info shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-info fw-bold">
+                            <i class="bi bi-gift-fill me-2"></i> FREESHIP
+                        </h5>
+                        <p class="card-text">Save <strong>₹5</strong> on shipping</p>
+                        <small class="text-muted">Minimum order required</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="container my-5">
+    <h2 class="text-center fw-bold mb-5 text-primary">How It Works</h2>
+    <div class="row g-4">
+        <div class="col-md-3 col-sm-6 text-center">
+            <div class="step-circle"><i class="bi bi-1-circle-fill"></i></div>
+            <h6 class="fw-bold">Browse Products</h6>
+            <p class="text-muted small">Explore our wide range of products</p>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+            <div class="step-circle"><i class="bi bi-2-circle-fill"></i></div>
+            <h6 class="fw-bold">Apply Promo Code</h6>
+            <p class="text-muted small">Get instant discounts</p>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+            <div class="step-circle"><i class="bi bi-3-circle-fill"></i></div>
+            <h6 class="fw-bold">Add to Cart</h6>
+            <p class="text-muted small">Review your items</p>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+            <div class="step-circle"><i class="bi bi-4-circle-fill"></i></div>
+            <h6 class="fw-bold">Checkout</h6>
+            <p class="text-muted small">Secure payment</p>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="cta-section text-white py-5 my-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Ready to Start Shopping?</h2>
+        <p class="lead mb-4">Join thousands of satisfied customers today!</p>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-light btn-lg px-5">
+            <i class="bi bi-arrow-right me-2"></i> Shop Now
+        </a>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #001f3f, #003366) !important;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #001f3f, #003366) !important;
+        border-radius: 15px;
+    }
+
+    .icon-style {
+        font-size: 50px;
+        color: #003366;
+        margin-bottom: 20px;
+    }
+
+    .hover-card {
+        transition: 0.3s;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+    .step-circle {
+        width: 60px;
+        height: 60px;
+        background-color: #003366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+</style>

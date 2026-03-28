@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FinTrackPro.Data;
+using FinTrackPro.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FinTrackPro.Data;
-using FinTrackPro.Models;
+using Microsoft.Identity.Client;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace FinTrackPro.Controllers
 {
@@ -44,7 +45,68 @@ namespace FinTrackPro.Controllers
 
             return View(transaction);
         }
+        public IActionResult MoneySent(int sendeid)
+        {
+            ViewBag.FromAccountId = sendeid;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> moneysent(int sendeid,int recieveid,double amount)
+        {
+            var fromAccount = await _context.Account.FindAsync(sendeid);
+            var toAccount = await _context.Account.FindAsync(recieveid);
 
+            if (fromAccount == null || toAccount == null)
+            {
+                return NotFound();
+            }
+
+            
+            if (sendeid == recieveid)
+            {
+                ModelState.AddModelError("", "Cannot transfer to same account");
+                return View();
+            }
+
+            
+            if (fromAccount.Balance < amount)
+            {
+                ModelState.AddModelError("", "Insufficient Balance");
+                return View();
+            }
+
+            
+            fromAccount.Balance -= amount;
+            toAccount.Balance += amount;
+            var debitTxn = new Transaction
+            {
+                AccountId = sendeid,
+                Amount = amount,
+                Description = "transfer",
+                Category="debit"
+                ,
+                Date = DateTime.Now
+            };
+
+            
+            var creditTxn = new Transaction
+            {
+                AccountId = recieveid,
+                Amount = amount,
+                Description = "transfer",
+                Category = "credit",
+                Date = DateTime.Now
+            };
+
+            _context.Transaction.Add(debitTxn);
+            _context.Transaction.Add(creditTxn);
+
+            await _context.SaveChangesAsync(); 
+
+            return RedirectToAction("Index", "Accounts");
+
+        }
         // GET: Transactions/Create
         public IActionResult Create()
         {
@@ -61,11 +123,32 @@ namespace FinTrackPro.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(transaction);
+                
+                var account = await _context.Account
+                                .FirstOrDefaultAsync(a => a.AccountId == transaction.AccountId);
+
+                if (account != null)
+                {
+                    
+                    if (transaction.Category.ToLower() == "credit")
+                    {
+                        account.Balance += transaction.Amount;
+                    }
+                    
+                    else if(transaction.Category.ToLower() == "debit")
+                    {
+                        account.Balance -= transaction.Amount;
+                    }
+
+                }
+
+                
+                _context.Transaction.Add(transaction);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction("Index", "Accounts");
             }
-            ViewData["AccountId"] = new SelectList(_context.Account, "AccountId", "AccountId", transaction.AccountId);
+
             return View(transaction);
         }
 

@@ -1,0 +1,34 @@
+﻿@model List<VoltGear.Models.Laptop>
+
+<div class="container mt-4">
+    <h2>Inventory Dashboard</h2>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["msg"]
+        </div>
+    }
+
+    <a asp-action="Create" class="btn btn-success mb-3">Add Laptop</a>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Serial</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ModelName</td>
+                    <td>@item.SerialNumber</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

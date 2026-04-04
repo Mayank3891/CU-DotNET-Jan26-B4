@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">VoltGear Inventory System</h1>
+        <p class="lead text-muted">
+            Manage your laptop inventory efficiently with MongoDB
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow rounded-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Add New Laptop</h5>
+                    <p class="card-text text-muted">
+                        Insert new laptop details into inventory
+                    </p>
+                    <a asp-controller="Laptop" asp-action="Create" class="btn btn-primary w-100">
+                        Add Laptop
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow rounded-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">View Inventory</h5>
+                    <p class="card-text text-muted">
+                        See all laptops stored in MongoDB
+                    </p>
+                    <a asp-controller="Laptop" asp-action="Index" class="btn btn-success w-100">
+                        View Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,0 @@
-<Solution>
-  <Folder Name="/Services/">
-    <Project Path="../../../../../../../Desktop/Week 3/AuthService/AuthService.csproj" />
-    <Project Path="AccountsAPI.csproj" />
-  </Folder>
-</Solution>

@@ -1,0 +1,25 @@
+﻿@model VoltGear.Models.Laptop
+
+<div class="container mt-4">
+    <h2>Add Laptop</h2>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label>Model Name</label>
+            <input asp-for="ModelName" class="form-control" />
+            <span asp-validation-for="ModelName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label>Serial Number</label>
+            <input asp-for="SerialNumber" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Price</label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+
+        <button class="btn btn-primary">Save</button>
+    </form>
+</div>

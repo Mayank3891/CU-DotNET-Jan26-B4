@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="azurefront/azurefront.csproj" />
+  <Project Path="webback/webback.csproj" />
+</Solution>

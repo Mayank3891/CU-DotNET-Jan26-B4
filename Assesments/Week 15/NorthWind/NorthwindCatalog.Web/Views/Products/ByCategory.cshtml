@@ -1,0 +1,38 @@
+﻿@model List<NorthwindCatalog.Web.Models.ProductDto>
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Products</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            No products found for this category.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card shadow m-2">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ProductName</h5>
+
+                            <p><strong>Price:</strong> ₹@item.UnitPrice</p>
+                            <p><strong>Stock:</strong> @item.UnitsInStock</p>
+
+                            <p class="text-success">
+                                <strong>Inventory Value:</strong> ₹@item.InventoryValue
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="text-center mt-4">
+        <a href="/Categories" class="btn btn-secondary">Back to Categories</a>
+    </div>
+</div>

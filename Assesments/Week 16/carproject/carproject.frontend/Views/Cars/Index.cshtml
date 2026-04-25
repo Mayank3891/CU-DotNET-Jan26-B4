@@ -1,0 +1,50 @@
+﻿@model List<carproject.frontend.Models.CarDto>
+
+@{
+    ViewData["Title"] = "Cars";
+}
+
+<h2>Cars</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">Add New Car</a>
+
+@if (!Model.Any())
+{
+    <p>No cars available.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Mileage</th>
+                <th>Fuel</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Brand</td>
+                    <td>@car.Model</td>
+                    <td>@car.Year</td>
+                    <td>@car.Price</td>
+                    <td>@car.Mileage</td>
+                    <td>@car.FuelType</td>
+                    <td>@car.CarAge</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

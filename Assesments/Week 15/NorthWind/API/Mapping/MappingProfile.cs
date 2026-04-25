@@ -10,6 +10,8 @@ namespace API.Mapping
         public MappingProfile()
         {
             CreateMap<Category, CategoryDto>()
+                .ForMember(dest => dest.Id,
+        opt => opt.MapFrom(src => src.CategoryId))
      .ForMember(dest => dest.ImageUrl,
          opt => opt.MapFrom(src =>
              "/images/" + (src.CategoryName ?? "")

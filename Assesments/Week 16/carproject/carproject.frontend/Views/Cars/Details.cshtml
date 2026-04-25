@@ -1,0 +1,16 @@
+﻿@model carproject.frontend.Models.CarDto
+
+<h2>Car Details</h2>
+
+<div class="card p-3">
+    <p><b>Brand:</b> @Model.Brand</p>
+    <p><b>Model:</b> @Model.Model</p>
+    <p><b>Year:</b> @Model.Year</p>
+    <p><b>Price:</b> @Model.Price</p>
+    <p><b>Mileage:</b> @Model.Mileage</p>
+    <p><b>Fuel:</b> @Model.FuelType</p>
+    <p><b>Available:</b> @Model.IsAvailable</p>
+    <p><b>Age:</b> @Model.CarAge</p>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-2">Back</a>

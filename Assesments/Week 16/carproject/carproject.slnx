@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="carproject.backend/carproject.backend.csproj" />
+  <Project Path="carproject.frontend/carproject.frontend.csproj" />
+</Solution>

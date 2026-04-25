@@ -1,0 +1,43 @@
+﻿@model carproject.frontend.Models.CreateCarDto
+
+<h2>Create Car</h2>
+
+<form asp-action="Create">
+    <div class="mb-3">
+        <label>Brand</label>
+        <input asp-for="Brand" class="form-control" />
+        <span asp-validation-for="Brand" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label>Model</label>
+        <input asp-for="Model" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Year</label>
+        <input asp-for="Year" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Price</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Mileage</label>
+        <input asp-for="Mileage" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Fuel Type</label>
+        <input asp-for="FuelType" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
